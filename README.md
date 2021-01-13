@@ -2,7 +2,7 @@
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/darklordzw/postmaster-general-redis-transport/blob/master/LICENSE.md) [![Build Status](https://travis-ci.org/darklordzw/postmaster-general-redis-transport.svg?branch=master)](https://travis-ci.org/darklordzw/postmaster-general-redis-transport) [![Coverage Status](https://coveralls.io/repos/github/darklordzw/postmaster-general-redis-transport/badge.svg?branch=master)](https://coveralls.io/github/darklordzw/postmaster-general-redis-transport?branch=master)
 
-HTTP transport package for the [postmaster-general][1] library.
+Redis pub/sub transport package for the [postmaster-general][1] library.
 
 ## Install
 
