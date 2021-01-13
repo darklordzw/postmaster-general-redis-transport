@@ -29,8 +29,7 @@
   },
   "dependencies": {
     "bluebird": "^3.5.3",
-    "ioredis": "^4.14.1",
-    "lodash": "^4.17.11"
+    "ioredis": "^4.14.1"
   },
   "peerDependencies": {
     "postmaster-general": "5.x",
