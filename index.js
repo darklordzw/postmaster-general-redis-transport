@@ -21,14 +21,19 @@ class RedisTransport extends Transport {
    * @param {object} [options] - Optional settings.
    * @param {string} [options.redisUrl] - The url used to connect to Redis. Defaults to localhost.
    * @param {number} [options.timingsResetInterval] - How frequently should the transport clear its timing metrics, in milliseconds.
+   * @param {*} [options.pub] - Redis publish connection for testing.
+   * @param {*} [options.sub] - Redis subscription connection for testing.
+   * @param {*} [options.redisOverride] - Redis lib for mock testing.
    */
   constructor(options = {}) {
     super(options);
 
     this.handlers = {};
     this.redisUrl = options.redisUrl;
-    this.pub = null;
-    this.sub = null;
+    this.pub = options.pub || null;
+    this.sub = options.sub || null;
+
+    this.Redis = options.redisOverride || Redis;
   }
 
   /**
@@ -38,8 +43,8 @@ class RedisTransport extends Transport {
    */
   connect() {
     return super.connect().then(() => {
-      this.pub = this.pub || new Redis(this.redisUrl);
-      this.sub = this.sub || new Redis(this.redisUrl);
+      this.pub = this.pub || new this.Redis(this.redisUrl);
+      this.sub = this.sub || new this.Redis(this.redisUrl);
     });
   }
 
@@ -52,9 +57,11 @@ class RedisTransport extends Transport {
     return super.disconnect().then(() => {
       if (this.pub) {
         this.pub.quit();
+        this.pub = null;
       }
       if (this.sub) {
         this.sub.quit();
+        this.sub = null;
       }
     });
   }
