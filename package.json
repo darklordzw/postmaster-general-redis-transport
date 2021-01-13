@@ -1,0 +1,54 @@
+{
+  "name": "postmaster-general-redis-transport",
+  "version": "1.0.0",
+  "description": "A transport module for the postmaster-general microservice library using Redis pub/sub for message delivery.",
+  "author": "Ben Whatley",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darklordzw/postmaster-general-redis-transport.git"
+  },
+  "keywords": [
+    "microservices",
+    "message bus",
+    "postmaster-general"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/darklordzw/postmaster-general-redis-transport/issues"
+  },
+  "homepage": "https://github.com/darklordzw/postmaster-general-redis-transport#readme",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "defaults.json"
+  ],
+  "scripts": {
+    "test": "nyc --reporter=html --reporter=text mocha --exit",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "./node_modules/.bin/eslint --fix . || exit 0"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "ioredis": "^4.14.1",
+    "lodash": "^4.17.11"
+  },
+  "peerDependencies": {
+    "postmaster-general": "5.x",
+    "postmaster-general-core": "^1.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.3",
+    "dirty-chai": "^2.0.1",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "postmaster-general-core": "^1.0.1",
+    "prettier": "^2.2.1",
+    "sinon": "^9.2.3"
+  }
+}
